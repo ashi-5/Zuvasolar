@@ -1,106 +1,161 @@
-import { Link } from "react-router-dom";
-
-const Footer = () => {
+import { Instagram, Facebook, MessageCircle } from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+export default function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const handleClick = () => {
+    if (location.pathname === "/") {
+      // Already on home → just scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // Go to home and scroll to top
+      navigate("/");
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 50);
+    }
+  };
   return (
-    <footer className="bg-[#0F2F23] text-gray-300">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        {/* Top Section */}
-        <div className="grid gap-12 md:grid-cols-4">
-          {/* Brand + Address */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-white">
-              Zuva<span className="text-[#D84A0E]">Solar</span>
-            </h2>
+    <footer className="relative overflow-hidden text-white">
+      {/* ORANGE RADIAL GRADIENT BACKGROUND */}
+      <div
+        className="absolute inset-0 -z-20
+        [background:radial-gradient(120%_120%_at_50%_10%,#FFE5D1_15%,#FFB07A_45%,#E66528_100%)]"
+      ></div>
 
-            <p className="text-sm">
-              Clean energy solutions for a sustainable future.
+      {/* DARK ORANGE OVERLAY (NOT GRAY / NOT BLACK) */}
+      <div className="absolute inset-0 -z-10 bg-[#9A3E12]/70"></div>
+
+      {/* CONTENT */}
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* LEFT: BRAND */}
+          <div>
+            <div className="mb-4">
+              <Link
+                to="/"
+                onClick={handleClick}
+                className="flex items-center text-3xl font-semibold"
+              >
+                <img
+                  src="/images/solar_icon.png"
+                  alt="Zuva Solar logo"
+                  className="h-10 w-10 mr-3"
+                />
+
+                <span>
+                  Zuva <span className="text-[#FFD2B8]">Solar</span>
+                </span>
+              </Link>
+            </div>
+
+            <p className="text-[#FFE6D6] max-w-md leading-relaxed">
+              Delivering reliable solar solutions focused on long-term value,
+              sustainability, and local impact.
             </p>
 
-            <div className="text-sm space-y-2">
-              <p>📍 Bangalore, India</p>
-              <p>📞 +91 9XXXXXXXXX</p>
-              <p>✉️ info@zuvasolar.com</p>
+            {/* SOCIAL ICONS */}
+            <div className="flex gap-4 text-base mt-6">
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-10 h-10 rounded-full border border-[#FFB98F]/60
+                           flex items-center justify-center
+                           text-[#FFE6D6]
+                           hover:text-white hover:border-[#FFD2B8]
+                           transition"
+              >
+                <Instagram size={18} />
+              </a>
+
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-10 h-10 rounded-full border border-[#FFB98F]/60
+                           flex items-center justify-center
+                           text-[#FFE6D6]
+                           hover:text-white hover:border-[#FFD2B8]
+                           transition"
+              >
+                <Facebook size={18} />
+              </a>
+
+              <a
+                href="https://wa.me/917995500320"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="w-10 h-10 rounded-full border border-[#FFB98F]/60
+                           flex items-center justify-center
+                           text-[#FFE6D6]
+                           hover:text-white hover:border-[#FFD2B8]
+                           transition"
+              >
+                <MessageCircle size={18} />
+              </a>
             </div>
           </div>
 
-          {/* Sitemap */}
-          <div>
-            <h3 className="text-[#D84A0E] font-semibold mb-4">Sitemap</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link to="/" className="hover:text-white">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:text-white">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/work" className="hover:text-white">
-                  Our Work
-                </Link>
-              </li>
-              <li>
-                <Link to="/investors" className="hover:text-white">
-                  Investor Relations
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-white">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Quick Actions */}
-          <div>
-            <h3 className="text-[#D84A0E] font-semibold mb-4">Quick Actions</h3>
-
-            <div className="space-y-4">
-              <button className="w-full border border-gray-500 px-4 py-3 rounded hover:border-[#D84A0E] hover:text-white transition">
-                📞 Call Us
-              </button>
-
-              <button className="w-full border border-gray-500 px-4 py-3 rounded hover:border-[#D84A0E] hover:text-white transition">
-                ✉️ Request a Quote
-              </button>
+          {/* RIGHT: LINKS + CONTACT */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-base">
+            {/* QUICK LINKS */}
+            <div>
+              <h3 className="font-semibold mb-4 text-white">Company</h3>
+              <ul className="space-y-3 text-[#FFE6D6]">
+                <li>
+                  <a href="/about" className="hover:text-white transition">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="/work" className="hover:text-white transition">
+                    Work
+                  </a>
+                </li>
+                <li>
+                  <a href="/contact" className="hover:text-white transition">
+                    Contact
+                  </a>
+                </li>
+              </ul>
             </div>
-          </div>
 
-          {/* Social */}
-          <div>
-            <h3 className="text-[#D84A0E] font-semibold mb-4">
-              Connect With Us
-            </h3>
-
-            <div className="flex gap-4 text-xl">
-              <span className="hover:text-white cursor-pointer">🔗</span>
-              <span className="hover:text-white cursor-pointer">📸</span>
-              <span className="hover:text-white cursor-pointer">📘</span>
-              <span className="hover:text-white cursor-pointer">▶️</span>
+            {/* CONTACT INFO */}
+            <div className="text-base">
+              <h3 className="font-semibold  mb-4 text-white">Contact</h3>
+              <ul className="space-y-3 text-[#FFE6D6]">
+                <li>
+                  <a
+                    href="mailto:info@zuvasolar.com"
+                    className="hover:text-white transition"
+                  >
+                    info@zuvasolar.com
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="tel:+917995500320"
+                    className="hover:text-white transition"
+                  >
+                    +91 79955 00320
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-gray-600 mt-12 pt-6 flex flex-col md:flex-row justify-between text-sm text-gray-400">
-          <p>© 2025 ZuvaSolar. All rights reserved.</p>
-
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <Link to="/privacy" className="hover:text-white">
-              Privacy Policy
-            </Link>
-            <Link to="/terms" className="hover:text-white">
-              Terms of Service
-            </Link>
-          </div>
+        {/* BOTTOM BAR */}
+        <div className="border-t border-[#FFB98F]/40 mt-12 pt-6 text-sm text-center text-[#FFD2B8]">
+          © {new Date().getFullYear()}{" "}
+          <span className="font-semibold">Zuva Solar</span>. All rights
+          reserved.
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

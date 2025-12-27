@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
-
-import heroVideo from "../assets/herovid.mp4";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
+import WhatsappFloat from "../components/WhatsappFloat.jsx";
+import AutoQuote from "../components/AutoQuote.jsx";
 
 //   card
 
@@ -54,34 +53,34 @@ const stats = [
 //   impact section
 const impactData = [
   {
-    icon: "🛡️",
-    value: "274 million",
-    text: "kgs of carbon emissions avoided every year",
+    icon: "⚡",
+    value: "Energy First Approach",
+    text: "Designed to deliver efficient, reliable solar solutions tailored to real-world needs.",
   },
   {
-    icon: "👥",
-    value: "1,10,000+",
-    text: "individuals benefiting from our work",
+    icon: "🌱",
+    value: "Sustainability Driven",
+    text: "Focused on reducing carbon footprint through clean, renewable energy adoption.",
   },
   {
-    icon: "❤️",
-    value: "18,382",
-    text: "women farmers empowered with sustainable irrigation",
+    icon: "🏘️",
+    value: "Community Focused",
+    text: "Committed to empowering homes and businesses with accessible solar power.",
   },
   {
-    icon: "💰",
-    value: "$1.2 billion",
-    text: "cumulative diesel savings delivered till date",
-  },
-  {
-    icon: "📈",
-    value: "~35%",
-    text: "average farm yield increase enabled by reliable & on-demand solar irrigation",
+    icon: "🛠️",
+    value: "Quality-Led Execution",
+    text: "Built with high-quality components and industry-standard installation practices.",
   },
   {
     icon: "📍",
-    value: "2,40,000+",
-    text: "acres of farmland now under assured solar irrigation",
+    value: "Regional Expertise",
+    text: "Deep understanding of local conditions, regulations, and energy requirements.",
+  },
+  {
+    icon: "🤝",
+    value: "Customer-First Support",
+    text: "Transparent guidance, honest recommendations, and long-term service commitment.",
   },
 ];
 
@@ -90,34 +89,34 @@ const impactData = [
 //   reviews
 const reviews = [
   {
-    name: "Parvinder Singh",
-    role: "Farmer · Amroha, Uttar Pradesh",
-    image: "https://i.pravatar.cc/100?img=12",
-    text: "I had been waiting to get a solar pump under the government subsidy program for nearly 2 years. The support from the ZuvaSolar team during the application and installation process was excellent.",
+    name: "Ravi Kumar Reddy",
+    role: "Farmer · Warangal, Telangana",
+    image: null,
+    text: "The guidance provided during the subsidy application and installation process was very helpful. The solar pump is working well and support has been responsive.",
   },
   {
-    name: "Dr. Suchin Bajaj",
-    role: "Founder · Cygnus Hospitals",
-    image: "https://i.pravatar.cc/100?img=32",
-    text: "I wanted a 12kW system with grid integration at my home. ZuvaSolar gave me a clear plan and realistic timeline. The system has been running flawlessly for over 18 months.",
+    name: "Srinivas Rao",
+    role: "Homeowner · Karimnagar, Telangana",
+    image: null,
+    text: "The team explained the system clearly and handled everything professionally. Installation was smooth and the system performance has been satisfactory.",
   },
   {
-    name: "Ramesh Patel",
-    role: "Industrial Unit Owner · Gujarat",
-    image: "https://i.pravatar.cc/100?img=45",
-    text: "Our factory rooftop solar installation was completed ahead of schedule. Power savings are significant and the monitoring support has been reliable.",
+    name: "Mahesh Yadav",
+    role: "Small Business Owner · Nalgonda, Telangana",
+    image: null,
+    text: "Zuva Solar helped us understand the cost savings and system sizing properly. The execution was timely and communication was clear.",
   },
   {
-    name: "Anita Sharma",
-    role: "Homeowner · Jaipur",
-    image: "https://i.pravatar.cc/100?img=47",
-    text: "From consultation to commissioning, everything was smooth. My electricity bills have reduced drastically and the team was very professional.",
+    name: "Lakshmi Devi",
+    role: "Residential Customer · Khammam, Telangana",
+    image: null,
+    text: "From site visit to commissioning, the process was well managed. The team answered all our questions patiently.",
   },
   {
-    name: "Suresh Naik",
-    role: "Agri Entrepreneur · Karnataka",
-    image: "https://i.pravatar.cc/100?img=56",
-    text: "Solar irrigation has changed the way we farm. ZuvaSolar ensured proper training and after-installation support which gave us confidence.",
+    name: "Venkatesh Naidu",
+    role: "Agri Entrepreneur · Anantapur, Andhra Pradesh",
+    image: null,
+    text: "Solar irrigation has improved reliability for our farming activities. The support team ensured proper installation and basic training.",
   },
 ];
 
@@ -200,7 +199,7 @@ const Home = () => {
         {/* video  */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
-          src={heroVideo}
+          src={"/videos/herovid.mp4"}
           autoPlay
           loop
           muted
@@ -222,8 +221,8 @@ const Home = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight"
           >
-            Solar That Pays Off For{" "}
-            <span className="relative inline-flex items-center justify-center min-w-[10ch] h-[1.6em] mt-3 md:m-0 overflow-hidden align-middle">
+            <span className="text-[#D84A0E]">Zuva</span> Solar Services For{" "}
+            <span className="relative inline-flex items-center justify-center min-w-[10ch] h-[1.4em] mt-3 md:m-0  align-middle">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={words[index]}
@@ -231,7 +230,7 @@ const Home = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="absolute inset-0 flex items-center justify-center bg-red-600 px-4 py-2 rounded"
+                  className="absolute inset-0 flex items-center justify-center bg-[#D84A0E] -mt-2 px-2  pb-2 rounded-xl"
                 >
                   {words[index]}
                 </motion.span>
@@ -246,20 +245,20 @@ const Home = () => {
             className="mt-6 text-lg md:text-xl text-gray-200"
           >
             India&apos;s most experienced solar company with{" "}
-            <span className="font-semibold text-white">60,000+</span> happy
+            <span className="font-semibold text-white">6000+</span> happy
             customers!
           </motion.p>
         </motion.div>
       </section>
       {/* cards section  */}
-      <section className="bg-white py-20">
+      <section className="bg-gray-100 shadow-xs py-20">
         <div className="max-w-7xl mx-auto px-6">
           {/* Heading */}
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               Tailored Solar Solutions for Every Need
             </h2>
-            <p className="mt-4 text-gray-600 text-lg">
+            <p className="mt-4 text-gray-700 text-lg">
               Custom-fit solar solutions for every use-case and customer
               segment.
             </p>
@@ -300,55 +299,29 @@ const Home = () => {
           {/* Heading */}
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              Nationwide Footprint. Last mile Access.
+              Nationwide Footprint. Last Mile Access.
             </h2>
             <p className="mt-4 text-gray-600 text-lg">
-              Every dot on the map tells a story how solar brought real change.
+              Every dot on the map tells a story of real solar impact.
             </p>
           </div>
 
-          {/* Container */}
-          <div className="mt-14 rounded-2xl overflow-hidden shadow-lg border">
-            {/* Stats Bar */}
-            <div className="grid grid-cols-2 md:grid-cols-4 bg-[#0B1C2D] text-white">
-              {stats.map((item, i) => (
-                <div
-                  key={i}
-                  className="px-6 py-6 text-center border-r border-white/10 last:border-r-0"
-                >
-                  <div className="text-2xl md:text-3xl font-bold">
-                    {item.value}
-                  </div>
-                  <div className="mt-1 text-sm text-gray-300">{item.label}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* REAL MAP */}
-            <div className="h-[500px] w-full">
-              <MapContainer
-                center={[22.5937, 78.9629]} // India center
-                zoom={5}
-                className="h-full w-full"
-              >
-                <TileLayer
-                  attribution="&copy; OpenStreetMap contributors"
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-
-                {locations.map((loc, i) => (
-                  <Marker key={i} position={[loc.lat, loc.lng]}>
-                    <Popup>{loc.name}</Popup>
-                  </Marker>
-                ))}
-              </MapContainer>
-            </div>
+          {/* Map */}
+          <div className="mt-12 rounded-2xl overflow-hidden shadow-md border">
+            <iframe
+              title="Zuva Solar Location"
+              src="https://www.google.com/maps?q=17.951861,79.599694&z=15&output=embed"
+              className="w-full h-[320px] md:h-[360px] border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </section>
+
       {/* end  */}
       {/* impact  */}
-      <section className="bg-white py-20">
+      <section className="bg-gray-100 py-20">
         <div className="max-w-7xl mx-auto px-6">
           {/* Heading */}
           <div className="text-center max-w-3xl mx-auto">
@@ -361,7 +334,7 @@ const Home = () => {
           </div>
 
           {/* Cards */}
-          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className=" rounded-xl p-8  rounded-xl p-8 mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {impactData.map((item, index) => (
               <div
                 key={index}
@@ -371,7 +344,7 @@ const Home = () => {
                 <div className="text-3xl mb-4 text-gray-700">{item.icon}</div>
 
                 {/* Value */}
-                <div className="text-red-600 text-2xl font-bold">
+                <div className="text-[#D84A0E] text-2xl font-bold">
                   {item.value}
                 </div>
 
@@ -406,7 +379,7 @@ const Home = () => {
                 {/* LEFT ARROW (ON CARD) */}
                 <button
                   onClick={prevSlide}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 hidden md:flex h-9 w-9 items-center justify-center rounded-full border bg-white shadow hover:bg-gray-100 text-gray-600"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 hidden md:flex h-9 w-9 items-center justify-center rounded-full shadow-md border border-gray-300 bg-white shadow hover:bg-gray-100 text-gray-600"
                 >
                   <ChevronLeft size={18} />
                 </button>
@@ -414,7 +387,7 @@ const Home = () => {
                 {/* RIGHT ARROW (ON CARD) */}
                 <button
                   onClick={nextSlide}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 hidden md:flex h-9 w-9 items-center justify-center rounded-full border bg-white shadow hover:bg-gray-100 text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 hidden md:flex h-9 w-9 items-center justify-center rounded-full shadow-md border border-gray-300 bg-white shadow hover:bg-gray-100 text-gray-600"
                 >
                   <ChevronRight size={18} />
                 </button>
@@ -422,11 +395,22 @@ const Home = () => {
                 {/* CONTENT */}
                 <div className="flex items-start gap-4 pr-6 pl-6 md:pl-12 md:pr-12">
                   {/* PROFILE IMAGE */}
-                  <img
-                    src={reviews[currentSlide].image}
-                    alt={reviews[currentSlide].name}
-                    className="h-12 w-12 rounded-full object-cover flex-shrink-0"
-                  />
+                  <div className="h-12 w-12 rounded-full bg-gray-200 border or flex items-center justify-center flex-shrink-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 text-gray-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a7.5 7.5 0 0115 0"
+                      />
+                    </svg>
+                  </div>
 
                   <div>
                     <p className="text-gray-700 text-sm md:text-base leading-relaxed">
@@ -497,6 +481,13 @@ const Home = () => {
       </section>
 
       {/* faq end  */}
+
+      {/* floating whats app  */}
+      <WhatsappFloat />
+
+      {/* form pop up  */}
+      <AutoQuote />
+
       {/* Footer */}
       <Footer />
     </div>

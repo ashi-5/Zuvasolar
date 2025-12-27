@@ -11,10 +11,14 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="text-3xl font-bold text-[#D84A0E]
-"
+            className="flex items-center gap-2 text-2xl font-bold text-[#D84A0E]"
           >
-            ZUVASOLAR
+            <img
+              src="/images/solar_icon.png"
+              alt="Zuva Solar logo"
+              className="h-10 w-10 object-contain"
+            />
+            <span>ZUVA SOLAR</span>
           </Link>
 
           {/* Desktop Menu */}
@@ -37,7 +41,10 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Button */}
-          <button className="md:hidden" onClick={() => setOpen(!open)}>
+          <button
+            className="md:hidden text-gray-800"
+            onClick={() => setOpen(!open)}
+          >
             <svg
               className="w-6 h-6"
               fill="none"
