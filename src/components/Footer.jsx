@@ -16,19 +16,10 @@ export default function Footer() {
     }
   };
   return (
-    <footer className="relative overflow-hidden text-white">
-      {/* ORANGE RADIAL GRADIENT BACKGROUND */}
-      <div
-        className="absolute inset-0 -z-20
-        bg-[#9A3E12]"
-      ></div>
-
-      {/* DARK ORANGE OVERLAY (NOT GRAY / NOT BLACK) */}
-      <div className="absolute inset-0 -z-10 bg-[#9A3E12]/70"></div>
-
+    <footer className="relative overflow-hidden bg-[#D84F17] text-white">
       {/* CONTENT */}
       <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid px-4 md:px-2 lg:px-0 grid-cols-1 md:grid-cols-2 gap-12">
           {/* LEFT: BRAND */}
           <div>
             <div className="mb-4">
