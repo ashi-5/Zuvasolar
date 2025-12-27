@@ -29,8 +29,8 @@ const Contact = () => {
     mobile: "",
     company: "",
     jobTitle: "",
-    country: "",
-    netZeroGoal: "",
+    state: "",
+
     requirements: "",
   });
 
@@ -52,11 +52,6 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.netZeroGoal) {
-      toast.error("Please select your Net-Zero goal");
-      return;
-    }
-
     if (selectedServices.length === 0) {
       toast.error("Please select at least one service");
       return;
@@ -75,8 +70,8 @@ const Contact = () => {
         mobile: "",
         company: "",
         jobTitle: "",
-        country: "",
-        netZeroGoal: "",
+        state: "",
+
         requirements: "",
       });
       setSelectedServices([]);
@@ -88,7 +83,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+91 98765 43210", "+971 50 123 4567"],
+      details: ["+91 79955 00320", "+971 79955 00320"],
       description: "Mon-Fri 9AM-6PM IST",
       color: "from-blue-500 to-cyan-500",
     },
@@ -102,7 +97,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Visit Us",
-      details: ["Mumbai, India", "Dubai, UAE"],
+      details: ["Khammam, Warangal", "Telangana, India"],
       description: "Schedule an appointment",
       color: "from-purple-500 to-pink-500",
     },
@@ -123,8 +118,6 @@ const Contact = () => {
     "Rooftop Solar",
     "Utility Scale Solar Projects",
   ];
-
-  const netZeroGoals = ["2030", "2040", "2050", "2060", "Not defined yet"];
 
   const faqs = [
     {
@@ -386,45 +379,22 @@ const Contact = () => {
                       />
                     </div>
 
-                    {/* Country */}
+                    {/* state */}
                     <select
-                      name="country"
-                      value={formData.country}
+                      name="state"
+                      value={formData.state}
                       onChange={handleInputChange}
                       required
                       className="w-full bg-white text-gray-900 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
                     >
-                      <option value="">Select Country *</option>
-                      <option>India</option>
-                      <option>UAE</option>
-                      <option>USA</option>
+                      <option value="">Select state *</option>
+                      <option>Telangana</option>
+                      <option>Andhra Pradesh</option>
+                      <option>Karnataka</option>
                       <option>Other</option>
                     </select>
 
                     {/* Net Zero Goal */}
-                    <div>
-                      <p className="font-medium text-gray-700 mb-2">
-                        Net-Zero Goal *
-                      </p>
-                      <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
-                        {netZeroGoals.map((goal) => (
-                          <button
-                            key={goal}
-                            type="button"
-                            onClick={() =>
-                              setFormData({ ...formData, netZeroGoal: goal })
-                            }
-                            className={`px-4 py-3 rounded-xl border text-sm font-medium transition ${
-                              formData.netZeroGoal === goal
-                                ? "bg-[#D84A0E] text-white border-[#D84A0E] shadow-md"
-                                : "bg-white text-gray-700 border-gray-300 hover:border-[#D84A0E] hover:text-[#D84A0E]"
-                            }`}
-                          >
-                            {goal}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
 
                     {/* Services */}
                     <div>
@@ -495,43 +465,36 @@ const Contact = () => {
                 </div>
 
                 {/* Locations */}
+                {/* Locations */}
                 <div className="space-y-5">
                   {/* India */}
                   <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-5 sm:p-6">
                     <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-1">
                       India Office
                     </h4>
-                    <p className="text-sm sm:text-base text-gray-600 mb-3">
-                      123 Solar Street, Mumbai, Maharashtra 400001
-                    </p>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Phone className="w-4 h-4" />
-                      <span>+91 98765 43210</span>
-                    </div>
-                  </div>
 
-                  {/* UAE */}
-                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-5 sm:p-6">
-                    <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-1">
-                      UAE Office
-                    </h4>
-                    <p className="text-sm sm:text-base text-gray-600 mb-3">
-                      456 Energy Avenue, Dubai, UAE
+                    <p className="text-sm sm:text-base text-gray-600 mb-3 leading-relaxed">
+                      19-9-482, Shambunipet,
+                      <br />
+                      Warangal, Telangana 506005, India
                     </p>
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Phone className="w-4 h-4" />
-                      <span>+971 50 123 4567</span>
+
+                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <Phone className="w-4 h-4 text-[#D84A0E]" />
+                      <span>+91 79955 00320</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Map Placeholder */}
-                <div className="mt-6 rounded-2xl h-52 sm:h-64 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-2" />
-                    <p className="text-blue-800 font-medium">Interactive Map</p>
-                    <p className="text-blue-600 text-sm">Coming Soon</p>
-                  </div>
+                {/* Map */}
+                <div className="mt-6 rounded-2xl overflow-hidden h-52 sm:h-64 border">
+                  <iframe
+                    title="Zuva Solar Warangal Location"
+                    src="https://www.google.com/maps?q=17.951866,79.59971&hl=en&z=16&output=embed"
+                    className="w-full h-full border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
               </div>
 
