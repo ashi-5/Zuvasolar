@@ -9,25 +9,29 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold text-red-600">
-            CLARO
+          <Link
+            to="/"
+            className="text-3xl font-bold text-[#D84A0E]
+"
+          >
+            ZUVASOLAR
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 font-medium text-gray-700">
-            <Link to="/" className="hover:text-red-600">
+            <Link to="/" className="hover:text-[#D84A0E]">
               Home
             </Link>
-            <Link to="/about" className="hover:text-red-600">
+            <Link to="/about" className="hover:text-[#D84A0E]">
               About Us
             </Link>
-            <Link to="/work" className="hover:text-red-600">
+            <Link to="/work" className="hover:text-[#D84A0E]">
               Work
             </Link>
-            <Link to="/investors" className="hover:text-red-600">
+            {/* <Link to="/investors" className="hover:text-red-600">
               Investor Relations
-            </Link>
-            <Link to="/contact" className="hover:text-red-600">
+            </Link> */}
+            <Link to="/contact" className="hover:text-[#D84A0E]">
               Contact
             </Link>
           </div>
@@ -64,9 +68,9 @@ const Navbar = () => {
             <Link to="/work" onClick={() => setOpen(false)}>
               Work
             </Link>
-            <Link to="/investors" onClick={() => setOpen(false)}>
+            {/* <Link to="/investors" onClick={() => setOpen(false)}>
               Investor Relations
-            </Link>
+            </Link> */}
             <Link to="/contact" onClick={() => setOpen(false)}>
               Contact
             </Link>

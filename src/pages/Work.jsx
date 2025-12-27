@@ -1,7 +1,13 @@
 import React from "react";
+import Navbar from "../components/Navbar.jsx";
 
 const Work = () => {
-  return <div>work</div>;
+  return (
+    <div>
+      {" "}
+      <Navbar />
+    </div>
+  );
 };
 
 export default Work;
