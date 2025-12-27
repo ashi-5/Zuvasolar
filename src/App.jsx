@@ -4,7 +4,7 @@ import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Work from "./pages/Work.jsx";
 import Contact from "./pages/Contact.jsx";
-
+import { Toaster } from "react-hot-toast";
 const App = () => {
   return (
     <div className="relative h-full w-full">
@@ -15,6 +15,7 @@ const App = () => {
         {/* <Route path="/investors" element={<Investors />} /> */}
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Toaster position="top-right" />
     </div>
   );
 };
