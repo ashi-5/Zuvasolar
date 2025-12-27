@@ -11,7 +11,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2 text-2xl font-bold text-[#D84A0E]"
+            className="flex items-center gap-2 text-2xl font-bold text-[#da5b27]"
           >
             <img
               src="/images/solar_icon.png"
@@ -23,19 +23,19 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 font-medium text-gray-700">
-            <Link to="/" className="hover:text-[#D84A0E]">
+            <Link to="/" className="hover:text-[#da5b27]">
               Home
             </Link>
-            <Link to="/about" className="hover:text-[#D84A0E]">
+            <Link to="/about" className="hover:text-[#da5b27]">
               About Us
             </Link>
-            <Link to="/work" className="hover:text-[#D84A0E]">
+            <Link to="/work" className="hover:text-[#da5b27]">
               Work
             </Link>
             {/* <Link to="/investors" className="hover:text-red-600">
               Investor Relations
             </Link> */}
-            <Link to="/contact" className="hover:text-[#D84A0E]">
+            <Link to="/contact" className="hover:text-[#da5b27]">
               Contact
             </Link>
           </div>

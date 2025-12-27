@@ -20,7 +20,7 @@ export default function Footer() {
       {/* ORANGE RADIAL GRADIENT BACKGROUND */}
       <div
         className="absolute inset-0 -z-20
-        [background:radial-gradient(120%_120%_at_50%_10%,#FFE5D1_15%,#FFB07A_45%,#E66528_100%)]"
+        bg-[#9A3E12]"
       ></div>
 
       {/* DARK ORANGE OVERLAY (NOT GRAY / NOT BLACK) */}

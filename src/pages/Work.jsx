@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar.jsx";
 import { motion, AnimatePresence } from "framer-motion";
+import Footer from "../components/Footer.jsx";
 import { Sun, Home, Building2, Factory, Star, Award, Users, Zap, Eye, MapPin, Calendar, X } from "lucide-react";
 
 const Work = () => {
@@ -556,6 +557,7 @@ const Work = () => {
           </div>
         </div>
       </motion.section>
+      <Footer />
     </div>
   );
 };

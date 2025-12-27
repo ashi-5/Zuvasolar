@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar.jsx";
 import { motion } from "framer-motion";
+import Footer from "../components/Footer.jsx";
 import { Sun, Users, Award, Leaf, Target, Heart, Zap, Globe, Star, Calendar, MapPin, TrendingUp, Shield, Clock, CheckCircle } from "lucide-react";
 
 const About = () => {
@@ -486,6 +487,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

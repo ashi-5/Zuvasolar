@@ -36,7 +36,7 @@ export default function AutoQuote() {
         {/* HEADER */}
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold text-gray-900">
-            Get a <span className="text-[#D84A0E]">FREE</span> Solar Quote
+            Get a <span className="text-[#da5b27]">FREE</span> Solar Quote
           </h2>
           <p className="mt-2 text-sm text-gray-500">
             Share your details and our team will contact you shortly
@@ -79,7 +79,7 @@ export default function AutoQuote() {
 
           <button
             type="submit"
-            className="btn w-full bg-[#D84A0E] hover:bg-[#c63f0b] text-white text-base font-semibold rounded-lg border-0"
+            className="btn w-full bg-[#da5b27] hover:bg-[#c63f0b] text-white text-base font-semibold rounded-lg border-0"
           >
             Submit Details
           </button>

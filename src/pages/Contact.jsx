@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Zap, Shield, Users, MapPin, Phone, Mail, Clock, Send, CheckCircle, MessageCircle, Calendar, Globe, Star, ArrowRight } from "lucide-react";
 
@@ -551,6 +552,7 @@ const Contact = () => {
           </motion.div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

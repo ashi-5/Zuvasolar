@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, Zap, Leaf, Home as HomeIcon, Wrench, MapPin, Users, Quote } from "lucide-react";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import WhatsappFloat from "../components/WhatsappFloat.jsx";
@@ -53,32 +53,32 @@ const stats = [
 //   impact section
 const impactData = [
   {
-    icon: "⚡",
+    icon: <Zap className="h-8 w-8 text-[#da5b27]" />,
     value: "Energy First Approach",
     text: "Designed to deliver efficient, reliable solar solutions tailored to real-world needs.",
   },
   {
-    icon: "🌱",
+    icon: <Leaf className="h-8 w-8 text-green-600" />,
     value: "Sustainability Driven",
     text: "Focused on reducing carbon footprint through clean, renewable energy adoption.",
   },
   {
-    icon: "🏘️",
+    icon: <HomeIcon className="h-8 w-8 text-blue-600" />,
     value: "Community Focused",
     text: "Committed to empowering homes and businesses with accessible solar power.",
   },
   {
-    icon: "🛠️",
+    icon: <Wrench className="h-8 w-8 text-gray-600" />,
     value: "Quality-Led Execution",
     text: "Built with high-quality components and industry-standard installation practices.",
   },
   {
-    icon: "📍",
+    icon: <MapPin className="h-8 w-8 text-red-600" />,
     value: "Regional Expertise",
     text: "Deep understanding of local conditions, regulations, and energy requirements.",
   },
   {
-    icon: "🤝",
+    icon: <Users className="h-8 w-8 text-purple-600" />,
     value: "Customer-First Support",
     text: "Transparent guidance, honest recommendations, and long-term service commitment.",
   },
@@ -206,7 +206,26 @@ const Home = () => {
           playsInline
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/70"></div>
+
+        {/* Floating Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div
+            animate={{ y: [0, -20, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 left-10 w-4 h-4 bg-[#da5b27]/30 rounded-full blur-sm"
+          ></motion.div>
+          <motion.div
+            animate={{ y: [0, 20, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-40 right-20 w-6 h-6 bg-yellow-400/20 rounded-full blur-sm"
+          ></motion.div>
+          <motion.div
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-32 left-20 w-3 h-3 bg-white/20 rounded-full blur-sm"
+          ></motion.div>
+        </div>
 
         {/* Content */}
         <motion.div
@@ -219,9 +238,9 @@ const Home = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight"
+            className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight drop-shadow-2xl"
           >
-            <span className="text-[#D84A0E]">Zuva</span> Solar Services For{" "}
+            <span className="text-[#da5b27]">Zuva</span> Solar Services For{" "}
             <span className="relative inline-flex items-center justify-center min-w-[10ch] h-[1.4em] mt-3 md:m-0  align-middle">
               <AnimatePresence mode="wait">
                 <motion.span
@@ -230,7 +249,7 @@ const Home = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="absolute inset-0 flex items-center justify-center bg-[#D84A0E] -mt-2 px-2  pb-2 rounded-xl"
+                  className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-[#da5b27] to-[#FF6B35] -mt-2 px-2 pb-2 rounded-xl shadow-lg"
                 >
                   {words[index]}
                 </motion.span>
@@ -242,19 +261,35 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="mt-6 text-lg md:text-xl text-gray-200"
+            className="mt-6 text-lg md:text-xl text-gray-200 drop-shadow-lg"
           >
             India&apos;s most experienced solar company with{" "}
-            <span className="font-semibold text-white">6000+</span> happy
+            <span className="font-semibold text-white bg-[#da5b27]/20 px-2 py-1 rounded">6000+</span> happy
             customers!
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="mt-8"
+          >
+            <button className="bg-[#da5b27] hover:bg-[#B83D0A] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              Get Free Quote
+            </button>
+          </motion.div>
         </motion.div>
       </section>
       {/* cards section  */}
       <section className="bg-gray-100 shadow-xs py-20">
         <div className="max-w-7xl mx-auto px-6">
           {/* Heading */}
-          <div className="text-center max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               Tailored Solar Solutions for Every Need
             </h2>
@@ -262,32 +297,38 @@ const Home = () => {
               Custom-fit solar solutions for every use-case and customer
               segment.
             </p>
-          </div>
+          </motion.div>
 
           {/* Cards */}
           <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {solutions.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="group relative h-[420px] overflow-hidden rounded-2xl cursor-pointer"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className="group relative h-[420px] overflow-hidden rounded-2xl cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200"
               >
                 {/* Image */}
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
                 {/* Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/60 group-hover:via-black/20 transition-all duration-500"></div>
+
+                {/* Glow Effect */}
+                <div className="absolute inset-0 rounded-2xl ring-2 ring-transparent group-hover:ring-[#da5b27]/50 transition-all duration-500"></div>
 
                 {/* Text */}
-                <div className="absolute bottom-5 left-5 right-5">
-                  <h3 className="text-white text-lg font-semibold">
+                <div className="absolute bottom-5 left-5 right-5 transform group-hover:translate-y-[-5px] transition-transform duration-300">
+                  <h3 className="text-white text-lg font-semibold drop-shadow-lg">
                     {item.title}
                   </h3>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -297,14 +338,19 @@ const Home = () => {
       <section className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-6">
           {/* Heading */}
-          <div className="text-center max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               Nationwide Footprint. Last Mile Access.
             </h2>
             <p className="mt-4 text-gray-600 text-lg">
               Every dot on the map tells a story of real solar impact.
             </p>
-          </div>
+          </motion.div>
 
           {/* Map */}
           <div className="mt-12 rounded-2xl overflow-hidden shadow-md border">
@@ -324,27 +370,37 @@ const Home = () => {
       <section className="bg-gray-100 py-20">
         <div className="max-w-7xl mx-auto px-6">
           {/* Heading */}
-          <div className="text-center max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               Delivering Lasting Impact
             </h2>
             <p className="mt-4 text-gray-600 text-lg">
               Our work delivers meaningful environmental & social impact
             </p>
-          </div>
+          </motion.div>
 
           {/* Cards */}
           <div className=" rounded-xl p-8  rounded-xl p-8 mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {impactData.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white rounded-xl p-8 text-center shadow-sm border hover:shadow-md transition"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className="bg-white rounded-xl p-8 text-center shadow-sm border hover:shadow-lg hover:border-[#da5b27]/20 transition-all duration-300"
               >
                 {/* Icon */}
-                <div className="text-3xl mb-4 text-gray-700">{item.icon}</div>
+                <div className="flex justify-center mb-4">
+                  {item.icon}
+                </div>
 
                 {/* Value */}
-                <div className="text-[#D84A0E] text-2xl font-bold">
+                <div className="text-[#da5b27] text-2xl font-bold">
                   {item.value}
                 </div>
 
@@ -352,7 +408,7 @@ const Home = () => {
                 <p className="mt-3 text-sm text-gray-600 leading-relaxed">
                   {item.text}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -362,20 +418,32 @@ const Home = () => {
       <section className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-6">
           {/* Heading */}
-          <div className="text-center max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               Customer Validation
             </h2>
             <p className="mt-4 text-gray-600 text-lg">
               Our customers love us — hear what they have to say about our work!
             </p>
-          </div>
+          </motion.div>
 
           {/* Slider */}
           <div className="relative mt-12 flex justify-center">
             <div className="relative w-full max-w-2xl">
               {/* CARD */}
-              <div className="bg-white p-6 md:p-8 rounded-xl shadow-sm border relative">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.5 }}
+                className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 relative"
+              >
                 {/* LEFT ARROW (ON CARD) */}
                 <button
                   onClick={prevSlide}
@@ -387,18 +455,23 @@ const Home = () => {
                 {/* RIGHT ARROW (ON CARD) */}
                 <button
                   onClick={nextSlide}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 hidden md:flex h-9 w-9 items-center justify-center rounded-full shadow-md border border-gray-300 bg-white shadow hover:bg-gray-100 text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 hidden md:flex h-9 w-9 items-center justify-center rounded-full shadow-md border border-gray-300 bg-white hover:bg-gray-100 text-gray-600 transition-colors"
                 >
                   <ChevronRight size={18} />
                 </button>
 
+                {/* Quote Icon */}
+                <div className="absolute top-4 right-4 text-[#da5b27]/20">
+                  <Quote size={32} />
+                </div>
+
                 {/* CONTENT */}
                 <div className="flex items-start gap-4 pr-6 pl-6 md:pl-12 md:pr-12">
                   {/* PROFILE IMAGE */}
-                  <div className="h-12 w-12 rounded-full bg-gray-200 border or flex items-center justify-center flex-shrink-0">
+                  <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#da5b27] to-[#FF6B35] border-2 border-white shadow-md flex items-center justify-center flex-shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-gray-500"
+                      className="h-6 w-6 text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -413,12 +486,12 @@ const Home = () => {
                   </div>
 
                   <div>
-                    <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                    <p className="text-gray-700 text-sm md:text-base leading-relaxed italic">
                       “{reviews[currentSlide].text}”
                     </p>
 
                     <div className="mt-4">
-                      <p className="font-semibold text-[#D84A0E]">
+                      <p className="font-semibold text-[#da5b27]">
                         {reviews[currentSlide].name}
                       </p>
                       <p className="text-xs text-gray-500">
@@ -427,7 +500,7 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -437,40 +510,53 @@ const Home = () => {
       <section className="bg-white py-20">
         <div className="max-w-4xl mx-auto px-6">
           {/* Heading */}
-          <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               Frequently Asked Questions
             </h2>
             <p className="mt-4 text-gray-600 text-lg">
               Get answers to common questions about solar energy solutions.
             </p>
-          </div>
+          </motion.div>
 
           {/* FAQ List */}
           <div className="mt-12 space-y-4">
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="border rounded-lg bg-gray-50 overflow-hidden"
+                className={`border rounded-lg overflow-hidden transition-all duration-300 ${
+                  faqIndex === index
+                    ? "border-[#da5b27] bg-orange-50 shadow-md"
+                    : "border-gray-200 bg-gray-50"
+                }`}
               >
                 {/* Question */}
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center p-5 text-left"
+                  className={`w-full flex justify-between items-center p-5 text-left transition-colors ${
+                    faqIndex === index
+                      ? "bg-[#da5b27] text-white"
+                      : "text-gray-900 hover:bg-gray-100"
+                  }`}
                 >
-                  <span className="font-medium text-gray-900">
+                  <span className="font-medium">
                     {faq.question}
                   </span>
                   <ChevronDown
-                    className={`h-5 w-5 text-gray-500 transition-transform ${
-                      faqIndex === index ? "rotate-180" : ""
+                    className={`h-5 w-5 transition-transform ${
+                      faqIndex === index ? "rotate-180 text-white" : "text-gray-500"
                     }`}
                   />
                 </button>
 
                 {/* Answer */}
                 {faqIndex === index && (
-                  <div className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
+                  <div className="px-5 pb-5 text-gray-600 text-sm leading-relaxed bg-white">
                     {faq.answer}
                   </div>
                 )}
