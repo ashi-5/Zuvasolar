@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar.jsx";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer.jsx";
+import WhatsappFloat from "../components/WhatsappFloat.jsx";
 import {
   Sun,
   Users,
@@ -26,7 +27,7 @@ const About = () => {
       year: "2020",
       title: "The Beginning",
       description:
-        "ZuvaSolar was founded with a vision to revolutionize renewable energy in India and the UAE.",
+        "ZuvaSolar was founded with a vision to revolutionize renewable energy in India.",
       icon: Sun,
     },
     {
@@ -40,7 +41,7 @@ const About = () => {
       year: "2022",
       title: "International Expansion",
       description:
-        "Extended our services to the UAE, bringing sustainable energy solutions to the Middle East.",
+        "Extended our services to the across India, bringing sustainable energy solutions to the Middle East.",
       icon: Globe,
     },
     {
@@ -52,9 +53,9 @@ const About = () => {
     },
     {
       year: "2024",
-      title: "10,000+ Installations",
+      title: "6000+ Installations",
       description:
-        "Reached a milestone of 10,000+ successful solar installations across India and UAE.",
+        "Reached a milestone of 6000+ successful solar installations across India.",
       icon: Star,
     },
     {
@@ -68,7 +69,7 @@ const About = () => {
 
   const stats = [
     {
-      number: "10,000+",
+      number: "6000+",
       label: "Happy Customers",
       icon: Users,
       color: "from-blue-500 to-cyan-500",
@@ -95,9 +96,9 @@ const About = () => {
 
   const team = [
     {
-      name: "Rajesh Kumar",
+      name: "Raviteja",
       position: "CEO & Founder",
-      bio: "Visionary leader with 15+ years in renewable energy sector, driving innovation and sustainable solutions.",
+      bio: "Visionary leader with 5+ years in renewable energy sector, driving innovation and sustainable solutions.",
       image: "/images/industrial.jfif",
       expertise: [
         "Strategic Leadership",
@@ -106,14 +107,14 @@ const About = () => {
       ],
     },
     {
-      name: "Priya Sharma",
+      name: "Munawar ",
       position: "Chief Technology Officer",
       bio: "Expert in solar engineering and system optimization with a passion for cutting-edge renewable technologies.",
       image: "/images/recedential.jfif",
       expertise: ["Solar Engineering", "System Design", "Technical Innovation"],
     },
     {
-      name: "Ahmed Hassan",
+      name: "Praveen",
       position: "Operations Director",
       bio: "Oversees project execution and client relationships, ensuring seamless delivery of solar solutions.",
       image: "/images/storage.jfif",
@@ -167,7 +168,7 @@ const About = () => {
             className="text-xl lg:text-2xl max-w-4xl mx-auto text-white/90 font-light leading-relaxed mb-12"
           >
             Pioneering sustainable energy solutions that illuminate homes,
-            businesses, and communities across India and the UAE with clean,
+            businesses, and communities across India with clean,
             renewable power.
           </motion.p>
 
@@ -183,7 +184,7 @@ const About = () => {
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 flex items-center gap-2">
               <Globe className="w-5 h-5 text-yellow-300" />
-              <span className="text-white/90">India & UAE Presence</span>
+              <span className="text-white/90">Indian Presence</span>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 flex items-center gap-2">
               <Zap className="w-5 h-5 text-yellow-300" />
@@ -263,14 +264,11 @@ const About = () => {
           </h2>
 
           <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed">
-            What started as a small vision to make clean energy accessible has
-            grown into a mission-driven journey across India. We began by
-            helping a few households switch to solar power, and over the years,
-            our commitment to sustainability, innovation, and trust has allowed
-            us to empower businesses, communities, and industries. Today, we
-            continue to build a greener future by delivering reliable renewable
-            energy solutions that create long-term impact for people and the
-            planet.
+            We started with a simple vision—to make clean energy accessible to everyone.
+             What began as an effort to help a few households adopt solar power has grown into a mission-driven journey across India. 
+             Through our commitment to sustainability, innovation, and trust, we now empower businesses, communities, and industries.
+              Today, we continue building a greener future by delivering reliable renewable energy solutions that create long-term 
+              value for both people and the planet.
           </p>
         </div>
       </section>
@@ -318,7 +316,7 @@ const About = () => {
                 <h2 className="text-3xl font-bold">Our Vision</h2>
               </div>
               <p className="text-white/90 text-lg leading-relaxed">
-                To be the leading renewable energy company in India and the UAE,
+                To be the leading renewable energy company in India,
                 recognized for innovation, sustainability, and excellence in
                 solar energy solutions, creating a world where clean energy is
                 the standard, not the exception.
@@ -520,7 +518,7 @@ const About = () => {
                   icon: Award,
                   title: "Proven Track Record",
                   description:
-                    "Over 10,000 successful installations with a 99% customer satisfaction rate and industry-leading warranties.",
+                    "Over 6000 successful installations with a 99% customer satisfaction rate and industry-leading warranties.",
                 },
                 {
                   icon: Clock,
@@ -570,7 +568,7 @@ const About = () => {
                   className="rounded-2xl w-full h-96 object-cover shadow-2xl"
                 />
                 <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl p-6 shadow-xl">
-                  <div className="text-2xl font-bold text-white">10,000+</div>
+                  <div className="text-2xl font-bold text-white">6000+</div>
                   <div className="text-white/90">Happy Customers</div>
                 </div>
               </div>
@@ -578,6 +576,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      <WhatsappFloat />
       <Footer />
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "../components/Footer.jsx";
+import WhatsappFloat from "../components/WhatsappFloat.jsx";
 import { Sun, Home, Building2, Factory, Star, Award, Users, Zap, Eye, MapPin, Calendar, X } from "lucide-react";
 
 const Work = () => {
@@ -13,11 +14,11 @@ const Work = () => {
       id: 1,
       title: "Eco-Friendly Home Transformation",
       category: "residential",
-      description: "Revolutionary 5kW solar installation that reduced energy costs by 80% for a modern Mumbai family.",
+      description: "Revolutionary 5kW solar installation that reduced energy costs by 80% for a modern Telangana family.",
       fullDescription: "This comprehensive residential project involved a complete solar transformation of a 3BHK apartment. We installed high-efficiency monocrystalline panels, a smart inverter system, and integrated battery storage. The system generates 6000+ kWh annually, completely offsetting the household's electricity consumption.",
-      image: "/images/recedential.jfif",
+      image: "https://images.pexels.com/photos/137602/pexels-photo-137602.jpeg?cs=srgb&dl=pexels-scottwebb-137602.jpg&fm=jpg",
       icon: Home,
-      stats: { capacity: "5kW", savings: "80%", location: "Mumbai", year: "2024" },
+      stats: { capacity: "5kW", savings: "80%", location: "Telangana", year: "2021" },
       featured: true,
       technologies: ["Monocrystalline Panels", "Smart Inverter", "Battery Storage"],
       testimonial: "Our electricity bill went from ₹8,000 to ₹1,600 per month!"
@@ -26,11 +27,11 @@ const Work = () => {
       id: 2,
       title: "Corporate Campus Revolution",
       category: "commercial",
-      description: "50kW solar power system lighting up corporate workspaces across Delhi's business district.",
-      fullDescription: "A landmark commercial installation covering 10,000 sq ft of office space. The system includes rooftop panels, building-integrated photovoltaics, and a comprehensive monitoring dashboard. This project reduced the company's carbon footprint by 60% and saved ₹4 lakh annually.",
-      image: "/images/industrial.jfif",
+      description: "50kW solar power system lighting up corporate workspaces across Warangal's business district.",
+      fullDescription: "A landmark commercial installation covering 6000 sq ft of office space. The system includes rooftop panels, building-integrated photovoltaics, and a comprehensive monitoring dashboard. This project reduced the company's carbon footprint by 60% and saved ₹4 lakh annually.",
+      image: "https://images.pexels.com/photos/1599819/pexels-photo-1599819.jpeg?cs=srgb&dl=pexels-tomfisk-1599819.jpg&fm=jpg",
       icon: Building2,
-      stats: { capacity: "50kW", savings: "60%", location: "Delhi", year: "2023" },
+      stats: { capacity: "50kW", savings: "60%", location: "Warangal", year: "2022" },
       featured: true,
       technologies: ["BIPV System", "SCADA Monitoring", "Grid Integration"],
       testimonial: "The ROI was achieved in just 4 years!"
@@ -39,11 +40,11 @@ const Work = () => {
       id: 3,
       title: "Industrial Power Giant",
       category: "industrial",
-      description: "1MW solar farm powering manufacturing excellence in Gujarat's industrial corridor.",
+      description: "1MW solar farm powering manufacturing excellence in Telangana's industrial corridor.",
       fullDescription: "This utility-scale solar installation spans 5 acres and provides clean energy to three manufacturing facilities. The project includes advanced tracking systems, weather monitoring, and AI-optimized power distribution.",
-      image: "/images/storage.jfif",
+      image: "https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg?cs=srgb&dl=pexels-pixabay-356036.jpg&fm=jpg",
       icon: Factory,
-      stats: { capacity: "1MW", savings: "70%", location: "Gujarat", year: "2023" },
+      stats: { capacity: "1MW", savings: "70%", location: "Telangana", year: "2020" },
       featured: false,
       technologies: ["Dual-Axis Tracking", "AI Optimization", "Weather Monitoring"],
       testimonial: "Reliable power 24/7, zero downtime since installation."
@@ -54,9 +55,9 @@ const Work = () => {
       category: "residential",
       description: "Smart rooftop solution maximizing limited urban space for optimal energy generation.",
       fullDescription: "An innovative installation on a high-rise apartment building utilizing every inch of available rooftop space. The system includes micro-inverters for maximum efficiency and a community monitoring app.",
-      image: "/images/recedential.jfif",
+      image: "https://images.pexels.com/photos/159243/solar-solar-cells-photovoltaic-environmentally-friendly-159243.jpeg?cs=srgb&dl=pexels-pixabay-159243.jpg&fm=jpg",
       icon: Home,
-      stats: { capacity: "3kW", savings: "75%", location: "Pune", year: "2024" },
+      stats: { capacity: "3kW", savings: "75%", location: "Warangal", year: "2023" },
       featured: false,
       technologies: ["Micro-Inverters", "Community App", "Space Optimization"],
       testimonial: "Our building now produces more energy than it consumes!"
@@ -65,11 +66,11 @@ const Work = () => {
       id: 5,
       title: "Tech Park Sustainability",
       category: "commercial",
-      description: "100kW comprehensive solar solution covering multiple buildings in Bangalore's tech hub.",
+      description: "100kW comprehensive solar solution covering multiple buildings in Telangana's tech hub.",
       fullDescription: "A multi-building solar installation serving 500+ employees across three office buildings. The system includes smart metering, demand response capabilities, and integration with the campus energy management system.",
-      image: "/images/industrial.jfif",
+      image: "https://images.pexels.com/photos/8853502/pexels-photo-8853502.jpeg?cs=srgb&dl=pexels-cristian-rojas-8853502.jpg&fm=jpg",
       icon: Building2,
-      stats: { capacity: "100kW", savings: "55%", location: "Bangalore", year: "2023" },
+      stats: { capacity: "100kW", savings: "55%", location: "Telangana", year: "2024" },
       featured: false,
       technologies: ["Smart Metering", "Demand Response", "EMS Integration"],
       testimonial: "We're now a net-positive energy campus."
@@ -78,14 +79,66 @@ const Work = () => {
       id: 6,
       title: "Grid-Scale Solar Powerhouse",
       category: "industrial",
-      description: "5MW utility-scale solar plant contributing clean energy to Rajasthan's power grid.",
+      description: "5MW utility-scale solar plant contributing clean energy to Warangal's power grid.",
       fullDescription: "A massive 5MW installation spanning 25 acres, featuring the latest in solar technology including bifacial panels, advanced tracking, and grid stabilization systems. This project powers 2,500 homes annually.",
-      image: "/images/storage.jfif",
+      image: "https://images.pexels.com/photos/2800832/pexels-photo-2800832.jpeg?cs=srgb&dl=pexels-kelly-2800832.jpg&fm=jpg",
       icon: Factory,
-      stats: { capacity: "5MW", savings: "65%", location: "Rajasthan", year: "2022" },
+      stats: { capacity: "5MW", savings: "65%", location: "Warangal", year: "2021" },
       featured: true,
       technologies: ["Bifacial Panels", "Grid Stabilization", "Advanced Tracking"],
       testimonial: "Setting the standard for utility-scale solar in India."
+    },
+    {
+      id: 7,
+      title: "Green Village Initiative",
+      category: "residential",
+      description: "10kW community solar project bringing sustainable energy to rural Telangana households.",
+      fullDescription: "This pioneering project installed solar panels across 50 homes in a Telangana village, providing clean energy and reducing dependency on grid power. The system includes shared battery storage and community monitoring.",
+      image: "https://images.pexels.com/photos/8853500/pexels-photo-8853500.jpeg?cs=srgb&dl=pexels-cristian-rojas-8853500.jpg&fm=jpg",
+      icon: Home,
+      stats: { capacity: "10kW", savings: "85%", location: "Telangana", year: "2025" },
+      featured: true,
+      technologies: ["Community Storage", "Shared Inverters", "Rural Optimization"],
+      testimonial: "Our village is now energy independent!"
+    },
+    {
+      id: 8,
+      title: "Smart Office Complex",
+      category: "commercial",
+      description: "75kW intelligent solar system for Warangal's modern business center.",
+      fullDescription: "A state-of-the-art commercial installation featuring AI-powered energy management and smart grid integration. The system covers 8000 sq ft and includes real-time monitoring and automated optimization.",
+      image: "https://images.pexels.com/photos/8853536/pexels-photo-8853536.jpeg?cs=srgb&dl=pexels-cristian-rojas-8853536.jpg&fm=jpg",
+      icon: Building2,
+      stats: { capacity: "75kW", savings: "65%", location: "Warangal", year: "2025" },
+      featured: false,
+      technologies: ["AI Management", "Smart Grid", "Real-time Monitoring"],
+      testimonial: "Our energy costs have dropped by 65% with intelligent automation."
+    },
+    {
+      id: 9,
+      title: "Mega Industrial Solar Farm",
+      category: "industrial",
+      description: "2MW industrial solar farm powering Telangana's manufacturing sector.",
+      fullDescription: "This large-scale industrial project spans 10 acres and provides clean energy to multiple factories. Featuring advanced bifacial panels and weather-adaptive tracking systems.",
+      image: "https://images.pexels.com/photos/356049/pexels-photo-356049.jpeg?cs=srgb&dl=pexels-pixabay-356049.jpg&fm=jpg",
+      icon: Factory,
+      stats: { capacity: "2MW", savings: "75%", location: "Telangana", year: "2025" },
+      featured: true,
+      technologies: ["Bifacial Panels", "Weather Tracking", "Industrial Integration"],
+      testimonial: "Uninterrupted power supply for 24/7 operations."
+    },
+    {
+      id: 10,
+      title: "Eco-Residential Complex",
+      category: "residential",
+      description: "8kW solar installation for Warangal's sustainable housing community.",
+      fullDescription: "A comprehensive residential complex project with integrated solar solutions for 20 apartments. Includes rooftop panels, battery backup, and smart home integration.",
+      image: "https://images.pexels.com/photos/433308/pexels-photo-433308.jpeg?cs=srgb&dl=pexels-pixabay-433308.jpg&fm=jpg",
+      icon: Home,
+      stats: { capacity: "8kW", savings: "78%", location: "Warangal", year: "2025" },
+      featured: false,
+      technologies: ["Integrated Panels", "Battery Backup", "Smart Home"],
+      testimonial: "Living sustainably has never been easier!"
     }
   ];
 
@@ -160,7 +213,7 @@ const Work = () => {
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 flex items-center gap-2">
               <Users className="w-5 h-5 text-yellow-300" />
-              <span className="text-white/90">10,000+ Happy Customers</span>
+              <span className="text-white/90">6000+ Happy Customers</span>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 flex items-center gap-2">
               <Zap className="w-5 h-5 text-yellow-300" />
@@ -179,7 +232,11 @@ const Work = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Explore Our Work</h2>
+            <h2 className={`text-3xl lg:text-4xl font-bold mb-4 transition-colors duration-300 ${
+              activeFilter === "all" ? "text-gray-800" : "text-[#D84A0E]"
+            }`}>
+              Explore Our Work
+            </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">Browse through our diverse portfolio of solar energy solutions</p>
           </motion.div>
 
@@ -195,7 +252,7 @@ const Work = () => {
                 onClick={() => setActiveFilter(filter.key)}
                 className={`group relative overflow-hidden rounded-2xl px-8 py-4 font-semibold transition-all duration-300 ${
                   activeFilter === filter.key
-                    ? "bg-gradient-to-r from-[#D84A0E] to-[#b83e0c] text-white shadow-2xl scale-105"
+                    ? "text-gray-800 shadow-2xl scale-105"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105"
                 }`}
                 whileHover={{ scale: 1.05 }}
@@ -204,12 +261,12 @@ const Work = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <div className="flex items-center gap-3">
-                  <filter.icon className={`w-6 h-6 ${activeFilter === filter.key ? 'text-white' : 'text-[#D84A0E]'}`} />
+                <div className="relative z-10 flex items-center gap-3">
+                  <filter.icon className={`w-6 h-6 text-[#D84A0E]`} />
                   <span>{filter.label}</span>
                   <span className={`px-2 py-1 rounded-full text-xs ${
                     activeFilter === filter.key
-                      ? 'bg-white/20 text-white'
+                      ? 'bg-[#D84A0E] text-white'
                       : 'bg-[#D84A0E]/10 text-[#D84A0E]'
                   }`}>
                     {filter.count}
@@ -218,7 +275,7 @@ const Work = () => {
                 {activeFilter === filter.key && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-gradient-to-r from-[#D84A0E] to-[#b83e0c] rounded-2xl"
+                    className="absolute inset-0 bg-white rounded-2xl border-2 border-[#D84A0E]"
                     initial={false}
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
@@ -451,21 +508,21 @@ const Work = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: "Rajesh Kumar",
-                position: "CEO, TechManufacturing Corp",
+                name: "Akilesh Yalapalli",
+                position: "Factory Owner, Telangana",
                 testimonial: "ZuvaSolar transformed our manufacturing facility with a cutting-edge solar solution that exceeded our expectations. The team's expertise and dedication to sustainable energy is truly remarkable.",
                 rating: 5,
                 project: "Industrial Power Giant"
               },
               {
-                name: "Priya Sharma",
-                position: "Homeowner, Mumbai",
+                name: "Ashith",
+                position: "Homeowner, Hyderabad",
                 testimonial: "Our electricity bill went from ₹8,000 to ₹1,600 per month! The installation was seamless and the monitoring app keeps us informed about our energy production.",
                 rating: 5,
                 project: "Eco-Friendly Home Transformation"
               },
               {
-                name: "Amit Patel",
+                name: "Roop Kumar",
                 position: "Operations Manager, Corporate Campus",
                 testimonial: "The ROI was achieved in just 4 years! Our carbon footprint has reduced by 60% and our employees love the sustainable workspace we've created.",
                 rating: 5,
@@ -530,8 +587,8 @@ const Work = () => {
             {[
               { number: "500+", label: "Projects Completed", icon: Sun, color: "from-yellow-400 to-orange-500" },
               { number: "50MW+", label: "Clean Energy Generated", icon: Zap, color: "from-blue-400 to-cyan-500" },
-              { number: "10,000+", label: "Satisfied Customers", icon: Users, color: "from-green-400 to-emerald-500" },
-              { number: "15+", label: "Years of Excellence", icon: Award, color: "from-purple-400 to-pink-500" }
+              { number: "6000+", label: "Satisfied Customers", icon: Users, color: "from-green-400 to-emerald-500" },
+              { number: "5+", label: "Years of Excellence", icon: Award, color: "from-purple-400 to-pink-500" }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -557,6 +614,7 @@ const Work = () => {
           </div>
         </div>
       </motion.section>
+      <WhatsappFloat />
       <Footer />
     </div>
   );
