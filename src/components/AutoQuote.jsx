@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { X } from "lucide-react";
 
-export default function AutoQuote() {
-  const [open, setOpen] = useState(false);
+export default function AutoQuote({ open, setOpen }) {
+  // const [open, setOpen] = useState(false);
 
   // OPEN AFTER 5 SECONDS
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setOpen(true);
-    }, 5000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setOpen(true);
+  //   }, 5000);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,7 +74,7 @@ export default function AutoQuote() {
             <option>Telangana</option>
             <option>Andhra Pradesh</option>
             <option>Karnataka</option>
-            <option>Maharashtra</option>
+            <option>Other States</option>
           </select>
 
           <button

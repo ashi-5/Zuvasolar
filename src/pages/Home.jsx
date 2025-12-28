@@ -1,6 +1,23 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, ChevronDown, Zap, Leaf, Home as HomeIcon, Wrench, MapPin, Users, Quote } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
+  Zap,
+  Leaf,
+  Home as HomeIcon,
+  Wrench,
+  MapPin,
+  Users,
+  Quote,
+  ShieldCheck,
+  BadgeCheck,
+  Landmark,
+  Clock,
+  Headset,
+  DollarSign,
+} from "lucide-react";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import WhatsappFloat from "../components/WhatsappFloat.jsx";
@@ -161,6 +178,22 @@ const Home = () => {
   const words = ["Farms", "Homes", "Businesses"];
   const [index, setIndex] = useState(0);
 
+  const [openQuote, setOpenQuote] = useState(false);
+
+  // AUTO OPEN AFTER 5 SECONDS
+  useEffect(() => {
+    const alreadyShown = sessionStorage.getItem("autoQuoteShown");
+
+    if (alreadyShown) return;
+
+    const timer = setTimeout(() => {
+      setOpenQuote(true);
+      sessionStorage.setItem("autoQuoteShown", "true");
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % words.length);
@@ -217,12 +250,22 @@ const Home = () => {
           ></motion.div>
           <motion.div
             animate={{ y: [0, 20, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
             className="absolute top-40 right-20 w-6 h-6 bg-yellow-400/20 rounded-full blur-sm"
           ></motion.div>
           <motion.div
             animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
             className="absolute bottom-32 left-20 w-3 h-3 bg-white/20 rounded-full blur-sm"
           ></motion.div>
         </div>
@@ -264,8 +307,10 @@ const Home = () => {
             className="mt-6 text-lg md:text-xl text-gray-200 drop-shadow-lg"
           >
             India&apos;s most experienced solar company with{" "}
-            <span className="font-semibold text-white bg-[#da5b27]/20 px-2 py-1 rounded">6000+</span> happy
-            customers!
+            <span className="font-semibold text-white bg-[#da5b27]/20 px-2 py-1 rounded">
+              6000+
+            </span>{" "}
+            happy customers!
           </motion.p>
 
           <motion.div
@@ -274,7 +319,10 @@ const Home = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="mt-8"
           >
-            <button className="bg-[#da5b27] hover:bg-[#B83D0A] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <button
+              onClick={() => setOpenQuote(true)}
+              className="bg-[#da5b27] hover:bg-[#B83D0A] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
               Get Free Quote
             </button>
           </motion.div>
@@ -334,6 +382,112 @@ const Home = () => {
         </div>
       </section>
       {/* end  */}
+      {/* products  */}
+      {/* Solar Panels */}
+      <div className="mt-10 bg-white mb-8 px-5">
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-[#D84F17]">
+            Explore Our Solar Panels
+          </h2>
+          <p className="mt-4 text-gray-700 text-lg">
+            Smart, durable, and high-efficiency modules for residential,
+            commercial, and utility-scale projects.
+          </p>
+        </motion.div>
+
+        {/* Panel Cards */}
+        <div className="mt-14  grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Monocrystalline */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="group bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-300"
+          >
+            <div className="p-6 sm:p-8 flex flex-col md:flex-row gap-6 md:gap-8 items-center">
+              {/* IMAGE */}
+              <div className="w-full md:w-1/3 flex justify-center">
+                <img
+                  src="/images/monocrystalline.jpg"
+                  alt="Monocrystalline Solar Panels"
+                  className="w-56 sm:w-64 md:w-full max-w-xs object-contain transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+
+              {/* CONTENT */}
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                  Monocrystalline Panels
+                </h3>
+
+                <ul className="mt-4 text-sm sm:text-base text-gray-700 space-y-1">
+                  <li>
+                    <strong>Watt Range:</strong> 410W – 600W
+                  </li>
+                  <li>
+                    <strong>Efficiency:</strong> ~21% – 22%
+                  </li>
+                  <li>High-efficiency single crystal silicon modules</li>
+                </ul>
+
+                <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+                  Ideal for residential rooftops, MSME projects, and compact
+                  commercial installations.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* TOPCon */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="group bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-300"
+          >
+            <div className="p-6 sm:p-8 flex flex-col md:flex-row gap-6 md:gap-8 items-center">
+              {/* IMAGE */}
+              <div className="w-full md:w-1/3 flex justify-center">
+                <img
+                  src="/images/topcon.jpg"
+                  alt="TOPCon Solar Panels"
+                  className="w-56 sm:w-64 md:w-full max-w-xs object-contain transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+
+              {/* CONTENT */}
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                  TOPCon Panels
+                </h3>
+
+                <ul className="mt-4 text-sm sm:text-base text-gray-800 space-y-1">
+                  <li>
+                    <strong>Watt Range:</strong> 570W – 700W
+                  </li>
+                  <li>
+                    <strong>Efficiency:</strong> ~22.5% – 23%
+                  </li>
+                  <li>Next-gen mono cells with superior thermal performance</li>
+                </ul>
+
+                <p className="mt-4 text-sm text-gray-700 leading-relaxed">
+                  Best suited for utility-scale solar farms, industrial
+                  rooftops, and high-output installations.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+      {/* end  */}
+
       {/* map section  */}
       <section className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-6">
@@ -366,8 +520,92 @@ const Home = () => {
       </section>
 
       {/* end  */}
+      {/* 4 card section  */}
+      <section className="py-10 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* HEADING */}
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-[#D84F17] mb-12"
+          >
+            Zuva’s Solar Solutions
+          </motion.h2>
+
+          {/* CARDS */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* CARD 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0 }}
+              viewport={{ once: true }}
+              className="rounded-2xl bg-white border state p-8 text-center shadow-sm hover:shadow-lg transition"
+            >
+              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#da5b27] text-white">
+                <ShieldCheck size={30} />
+              </div>
+              <p className="text-gray-800 text-base leading-relaxed">
+                30 years’ <br /> warranty on modules
+              </p>
+            </motion.div>
+
+            {/* CARD 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="rounded-2xl bg-white border state p-8 text-center shadow-sm hover:shadow-lg transition"
+            >
+              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#da5b27] text-white">
+                <BadgeCheck size={30} />
+              </div>
+              <p className="text-gray-800 text-base leading-relaxed">
+                Trusted quality <br /> assurance
+              </p>
+            </motion.div>
+
+            {/* CARD 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="rounded-2xl bg-white border state p-8 text-center shadow-sm hover:shadow-lg transition"
+            >
+              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#da5b27] text-white">
+                <Landmark size={26} />
+              </div>
+              <p className="text-gray-800 text-base leading-relaxed">
+                Easy financing <br /> options
+              </p>
+            </motion.div>
+
+            {/* CARD 4 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="rounded-2xl bg-white border state p-8 text-center shadow-sm hover:shadow-lg transition"
+            >
+              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#da5b27] text-white">
+                <Users size={26} />
+              </div>
+              <p className="text-gray-800 text-base leading-relaxed">
+                Lifetime service & <br /> aftersales support pan India
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* end  */}
       {/* impact  */}
-      <section className="bg-gray-100 py-20">
+      <section className="bg-gray-50 py-15">
         <div className="max-w-7xl mx-auto px-6">
           {/* Heading */}
           <motion.div
@@ -395,9 +633,7 @@ const Home = () => {
                 className="bg-white rounded-xl p-8 text-center shadow-sm border hover:shadow-lg hover:border-[#da5b27]/20 transition-all duration-300"
               >
                 {/* Icon */}
-                <div className="flex justify-center mb-4">
-                  {item.icon}
-                </div>
+                <div className="flex justify-center mb-4">{item.icon}</div>
 
                 {/* Value */}
                 <div className="text-[#da5b27] text-2xl font-bold">
@@ -414,8 +650,86 @@ const Home = () => {
         </div>
       </section>
       {/* end  */}
+      {/* why choose us  */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* HEADING */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[#d84f17]">
+              Why Choose Us
+            </h2>
+            <p className="mt-4 text-gray-800 text-base md:text-lg">
+              We provide end-to-end support for solar projects, ensuring smooth
+              execution, reliable sourcing, and long-term value.
+            </p>
+          </motion.div>
+
+          {/* CARDS */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <Landmark size={22} />,
+                title: "Smart Financing Options",
+                text: "Trusted financing support through verified partners across India.",
+              },
+              {
+                icon: <Clock size={22} />,
+                title: "Reliable & Timely Supply",
+                text: "Reduced delays with assured delivery timelines and planning.",
+              },
+              {
+                icon: <Zap size={22} />,
+                title: "Energy Efficient Solutions",
+                text: "High-efficiency systems designed for maximum performance.",
+              },
+              {
+                icon: <Headset size={22} />,
+                title: "Comprehensive Support",
+                text: "From procurement to maintenance, we simplify the entire journey.",
+              },
+              {
+                icon: <DollarSign size={22} />,
+                title: "Competitive Pricing",
+                text: "Cost-effective pricing through bulk sourcing and partnerships.",
+              },
+              {
+                icon: <Leaf size={22} />,
+                title: "Sustainability Compliance",
+                text: "Assistance with environmental approvals and compliance needs.",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-2xl p-6 shadow-sm border hover:shadow-lg transition"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="h-12 w-12 flex items-center justify-center rounded-full bg-[#d84f17] text-white">
+                    {item.icon}
+                  </div>
+                  <h3 className="font-semibold text-gray-900">{item.title}</h3>
+                </div>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {item.text}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* end  */}
       {/* testimonals  */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-100 py-10">
         <div className="max-w-7xl mx-auto px-6">
           {/* Heading */}
           <motion.div
@@ -436,7 +750,7 @@ const Home = () => {
           <div className="relative mt-12 flex justify-center">
             <div className="relative w-full max-w-2xl">
               {/* CARD */}
-              <motion.div
+              <div
                 key={currentSlide}
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -447,17 +761,25 @@ const Home = () => {
                 {/* LEFT ARROW (ON CARD) */}
                 <button
                   onClick={prevSlide}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 hidden md:flex h-9 w-9 items-center justify-center rounded-full shadow-md border border-gray-300 bg-white shadow hover:bg-gray-100 text-gray-600"
+                  className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 
+             flex h-8 w-8 sm:h-9 sm:w-9 
+             items-center justify-center 
+             rounded-full bg-white border border-gray-300 
+             shadow-md hover:bg-gray-100 text-gray-600 z-10"
                 >
-                  <ChevronLeft size={18} />
+                  <ChevronLeft size={16} className="sm:size-[18px]" />
                 </button>
 
                 {/* RIGHT ARROW (ON CARD) */}
                 <button
                   onClick={nextSlide}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 hidden md:flex h-9 w-9 items-center justify-center rounded-full shadow-md border border-gray-300 bg-white hover:bg-gray-100 text-gray-600 transition-colors"
+                  className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 
+             flex h-8 w-8 sm:h-9 sm:w-9 
+             items-center justify-center 
+             rounded-full bg-white border border-gray-300 
+             shadow-md hover:bg-gray-100 text-gray-600 z-10"
                 >
-                  <ChevronRight size={18} />
+                  <ChevronRight size={16} className="sm:size-[18px]" />
                 </button>
 
                 {/* Quote Icon */}
@@ -500,14 +822,14 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
       </section>
       {/* end  */}
       {/* faq start  */}
-      <section className="bg-white py-20">
+      <section className="bg-white py-15">
         <div className="max-w-4xl mx-auto px-6">
           {/* Heading */}
           <motion.div
@@ -544,12 +866,12 @@ const Home = () => {
                       : "text-gray-900 hover:bg-gray-100"
                   }`}
                 >
-                  <span className="font-medium">
-                    {faq.question}
-                  </span>
+                  <span className="font-medium">{faq.question}</span>
                   <ChevronDown
                     className={`h-5 w-5 transition-transform ${
-                      faqIndex === index ? "rotate-180 text-white" : "text-gray-500"
+                      faqIndex === index
+                        ? "rotate-180 text-white"
+                        : "text-gray-500"
                     }`}
                   />
                 </button>
@@ -572,7 +894,7 @@ const Home = () => {
       <WhatsappFloat />
 
       {/* form pop up  */}
-      <AutoQuote />
+      <AutoQuote open={openQuote} setOpen={setOpenQuote} />
 
       {/* Footer */}
       <Footer />

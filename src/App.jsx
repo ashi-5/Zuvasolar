@@ -7,7 +7,7 @@ import Contact from "./pages/Contact.jsx";
 import { Toaster } from "react-hot-toast";
 const App = () => {
   return (
-    <div className="relative h-full w-full">
+    <div className="relative bg-white h-full w-full">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

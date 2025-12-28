@@ -1,4 +1,11 @@
-import { Instagram, Facebook, MessageCircle } from "lucide-react";
+import {
+  Instagram,
+  Facebook,
+  MessageCircle,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 export default function Footer() {
   const navigate = useNavigate();
@@ -34,9 +41,7 @@ export default function Footer() {
                   className="h-10 w-10 mr-3"
                 />
 
-                <span>
-                  Zuva <span className="text-[#FFD2B8]">Solar</span>
-                </span>
+                <span>Zuva Solar</span>
               </Link>
             </div>
 
@@ -117,9 +122,12 @@ export default function Footer() {
 
             {/* CONTACT INFO */}
             <div className="text-base">
-              <h3 className="font-semibold  mb-4 text-white">Contact</h3>
-              <ul className="space-y-3 text-[#FFE6D6]">
-                <li>
+              <h3 className="font-semibold mb-4 text-white">Contact</h3>
+
+              <ul className="space-y-4 text-[#FFE6D6]">
+                {/* EMAIL */}
+                <li className="flex items-start gap-3">
+                  <Mail className="w-5 h-5 text-[#FFD2B8] mt-0.5" />
                   <a
                     href="mailto:info@zuvasolar.com"
                     className="hover:text-white transition"
@@ -127,13 +135,24 @@ export default function Footer() {
                     info@zuvasolar.com
                   </a>
                 </li>
-                <li>
+
+                {/* PHONE */}
+                <li className="flex items-start gap-3">
+                  <Phone className="w-5 h-5 text-[#FFD2B8] mt-0.5" />
                   <a
                     href="tel:+917995500320"
                     className="hover:text-white transition"
                   >
                     +91 79955 00320
                   </a>
+                </li>
+
+                {/* ADDRESS */}
+                <li className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-[#FFD2B8] mt-0.5" />
+                  <span className="leading-relaxed">
+                    19-9-483, Shambunipet, Warangal, Telangana 506005, India.
+                  </span>
                 </li>
               </ul>
             </div>
@@ -143,8 +162,10 @@ export default function Footer() {
         {/* BOTTOM BAR */}
         <div className="border-t border-[#FFB98F]/40 mt-12 pt-6 text-sm text-center text-[#FFD2B8]">
           © {new Date().getFullYear()}{" "}
-          <span className="font-semibold">Zuva Solar</span>. All rights
-          reserved.
+          <span className="font-semibold">
+            Zuva Engineering Solar Solutions
+          </span>
+          . All rights reserved.
         </div>
       </div>
     </footer>
