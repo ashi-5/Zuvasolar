@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
+import WhatsappFloat from "../components/WhatsappFloat.jsx";
 import toast, { Toaster } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -19,6 +20,7 @@ import {
   Globe,
   Star,
   ArrowRight,
+  Check,
 } from "lucide-react";
 
 const Contact = () => {
@@ -36,9 +38,11 @@ const Contact = () => {
 
   const [selectedServices, setSelectedServices] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isCallPopupOpen, setIsCallPopupOpen] = useState(false);
 
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleServiceChange = (service) => {
@@ -52,11 +56,71 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Trim all string inputs
+    const trimmedData = {
+      ...formData,
+      firstName: formData.firstName.trim(),
+      lastName: formData.lastName.trim(),
+      email: formData.email.trim(),
+      mobile: formData.mobile.trim(),
+      company: formData.company.trim(),
+      jobTitle: formData.jobTitle.trim(),
+      requirements: formData.requirements.trim(),
+    };
+
+    // Validation functions
+    const isValidEmail = (email) => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    };
+
+    const isValidMobile = (mobile) => {
+      const mobileRegex = /^[6-9]\d{9}$/;
+      return mobileRegex.test(mobile);
+    };
+
+    // Required field validations
+    if (!trimmedData.firstName || trimmedData.firstName.length < 2) {
+      toast.error("First name is required and must be at least 2 characters");
+      return;
+    }
+
+    if (!trimmedData.lastName || trimmedData.lastName.length < 2) {
+      toast.error("Last name is required and must be at least 2 characters");
+      return;
+    }
+
+    if (!trimmedData.email || !isValidEmail(trimmedData.email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
+    if (trimmedData.mobile && !isValidMobile(trimmedData.mobile)) {
+      toast.error("Please enter a valid 10-digit mobile number starting with 6-9");
+      return;
+    }
+
+    if (!trimmedData.company || trimmedData.company.length < 2) {
+      toast.error("Company name is required and must be at least 2 characters");
+      return;
+    }
+
+    if (!trimmedData.jobTitle || trimmedData.jobTitle.length < 2) {
+      toast.error("Job title is required and must be at least 2 characters");
+      return;
+    }
+
+    if (!trimmedData.state) {
+      toast.error("Please select your state");
+      return;
+    }
+
     if (selectedServices.length === 0) {
       toast.error("Please select at least one service");
       return;
     }
 
+    // If all validations pass
     toast.success("Our team will reach out to you shortly!");
 
     setIsSubmitted(true);
@@ -71,7 +135,6 @@ const Contact = () => {
         company: "",
         jobTitle: "",
         state: "",
-
         requirements: "",
       });
       setSelectedServices([]);
@@ -83,28 +146,28 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+91 79955 00320", "+971 79955 00320"],
-      description: "Mon-Fri 9AM-6PM IST",
+      details: ["+91 79955 00320",],
+      description: "Mon-Fri 10AM-6PM IST",
       color: "from-blue-500 to-cyan-500",
     },
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@zuvsolar.com", "support@zuvsolar.com"],
+      details: ["info@zuvsolar.com", "sm@zuvsolar.com"],
       description: "We'll respond within 24 hours",
       color: "from-green-500 to-emerald-500",
     },
     {
       icon: MapPin,
       title: "Visit Us",
-      details: ["Khammam, Warangal", "Telangana, India"],
+      details: ["Warangal", "Telangana, India"],
       description: "Schedule an appointment",
       color: "from-purple-500 to-pink-500",
     },
     {
       icon: Clock,
       title: "Business Hours",
-      details: ["Mon-Fri: 9AM-6PM", "Sat: 9AM-2PM"],
+      details: ["Mon-Fri: 10AM-6PM", "Sat: 10AM-3PM"],
       description: "Sunday: Closed",
       color: "from-yellow-500 to-orange-500",
     },
@@ -207,7 +270,7 @@ const Contact = () => {
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 flex items-center gap-2">
               <Globe className="w-5 h-5 text-yellow-300" />
-              <span className="text-white/90">India & UAE Coverage</span>
+              <span className="text-white/90">All over India</span>
             </div>
           </motion.div>
         </div>
@@ -353,6 +416,7 @@ const Contact = () => {
                         value={formData.mobile}
                         onChange={handleInputChange}
                         placeholder="Mobile Number"
+                        maxLength="10"
                         className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
                       />
                     </div>
@@ -405,14 +469,21 @@ const Contact = () => {
                         {services.map((service) => (
                           <label
                             key={service}
-                            className="flex items-center gap-3 p-3 rounded-xl border border-gray-300 bg-white text-gray-700 hover:border-[#D84A0E] transition"
+                            className="flex items-center gap-3 p-3 rounded-xl border border-gray-300 bg-white text-gray-700 hover:border-[#D84A0E] transition cursor-pointer"
                           >
                             <input
                               type="checkbox"
                               checked={selectedServices.includes(service)}
                               onChange={() => handleServiceChange(service)}
-                              className="w-4 h-4 accent-[#D84A0E] focus:ring-[#D84A0E]"
+                              className="sr-only"
                             />
+                            <span className={`w-4 h-4 border-2 border-black rounded flex items-center justify-center transition-colors ${
+                              selectedServices.includes(service) ? 'bg-black' : 'bg-white'
+                            }`}>
+                              {selectedServices.includes(service) && (
+                                <Check className="w-3 h-3 text-white" />
+                              )}
+                            </span>
                             {service}
                           </label>
                         ))}
@@ -474,7 +545,7 @@ const Contact = () => {
                     </h4>
 
                     <p className="text-sm sm:text-base text-gray-600 mb-3 leading-relaxed">
-                      19-9-482, Shambunipet,
+                      19-9-483, Shambunipet,
                       <br />
                       Warangal, Telangana 506005, India
                     </p>
@@ -490,7 +561,7 @@ const Contact = () => {
                 <div className="mt-6 rounded-2xl overflow-hidden h-52 sm:h-64 border">
                   <iframe
                     title="Zuva Solar Warangal Location"
-                    src="https://www.google.com/maps?q=17.951866,79.59971&hl=en&z=16&output=embed"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d170.19552239321968!2d79.59950582864538!3d17.95190225086053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b9e9f40dd6b459d%3A0x24252b4cdbdea41!2sZuva%20Engineering%20Solar%20Energy%20Solutions!5e1!3m2!1sen!2sin!4v1766933295726!5m2!1sen!2sin"
                     className="w-full h-full border-0"
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
@@ -603,20 +674,10 @@ const Contact = () => {
               <motion.button
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#D84A0E] to-[#b83e0c]
-                     px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-white
-                     shadow-lg transition hover:shadow-xl"
-              >
-                <Calendar className="w-5 h-5" />
-                Schedule Consultation
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.04, y: -2 }}
-                whileTap={{ scale: 0.98 }}
+                onClick={() => setIsCallPopupOpen(true)}
                 className="inline-flex items-center justify-center gap-3 rounded-xl border-2 border-[#D84A0E]
                      px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-[#D84A0E]
-                     transition hover:bg-[#D84A0E] hover:text-white"
+                     transition hover:bg-[#D84A0E] hover:text-white cursor-pointer"
               >
                 <Phone className="w-5 h-5" />
                 Call Now
@@ -626,6 +687,63 @@ const Contact = () => {
         </div>
       </section>
 
+      {/* CALL POPUP */}
+      <AnimatePresence>
+        {isCallPopupOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setIsCallPopupOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Phone className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                  Call Us Now
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Our experts are ready to help you with your solar energy needs.
+                </p>
+                <div className="bg-gray-50 rounded-xl p-4 mb-6">
+                  <p className="text-lg font-semibold text-gray-800 mb-1">
+                    +91 79955 00320
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Mon-Fri: 10AM-6PM | Sat: 10AM-3PM
+                  </p>
+                </div>
+                <div className="flex gap-3">
+                  <a
+                    href="tel:+917995500320"
+                    className="flex-1 bg-gradient-to-r from-[#D84A0E] to-[#b83e0c] text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg transition flex items-center justify-center gap-2"
+                  >
+                    <Phone className="w-5 h-5" />
+                    Call Now
+                  </a>
+                  <button
+                    onClick={() => setIsCallPopupOpen(false)}
+                    className="px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-gray-400 transition"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <WhatsappFloat />
       <Footer />
     </div>
   );
