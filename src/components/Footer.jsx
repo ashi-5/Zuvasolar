@@ -163,7 +163,7 @@ export default function Footer() {
         <div className="border-t border-[#FFB98F]/40 mt-12 pt-6 text-sm text-center text-[#FFD2B8]">
           © {new Date().getFullYear()}{" "}
           <span className="font-semibold">
-            Zuva Engineering Solar Solutions
+            Zuva Engineering Solar Energy Solutions
           </span>
           . All rights reserved.
         </div>

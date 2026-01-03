@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "../components/Footer.jsx";
@@ -8,6 +9,21 @@ import { Sun, Home, Building2, Factory, Star, Award, Users, Zap, Eye, MapPin, Ca
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
+  const navigate = useNavigate();
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProject]);
 
   const projects = [
     {
@@ -16,7 +32,7 @@ const Work = () => {
       category: "residential",
       description: "Revolutionary 5kW solar installation that reduced energy costs by 80% for a modern Telangana family.",
       fullDescription: "This comprehensive residential project involved a complete solar transformation of a 3BHK apartment. We installed high-efficiency monocrystalline panels, a smart inverter system, and integrated battery storage. The system generates 6000+ kWh annually, completely offsetting the household's electricity consumption.",
-      image: "https://images.pexels.com/photos/137602/pexels-photo-137602.jpeg?cs=srgb&dl=pexels-scottwebb-137602.jpg&fm=jpg",
+      image: "https://images.unsplash.com/photo-1691421740425-48ff22b6d442?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       icon: Home,
       stats: { capacity: "5kW", savings: "80%", location: "Telangana", year: "2021" },
       featured: true,
@@ -217,7 +233,7 @@ const Work = () => {
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 flex items-center gap-2">
               <Zap className="w-5 h-5 text-yellow-300" />
-              <span className="text-white/90">50MW+ Power Generated</span>
+              <span className="text-white/90">500MW+ Power Generated</span>
             </div>
           </motion.div>
         </div>
@@ -253,9 +269,8 @@ const Work = () => {
                 className={`group relative overflow-hidden rounded-2xl px-8 py-4 font-semibold transition-all duration-300 ${
                   activeFilter === filter.key
                     ? "text-gray-800 shadow-2xl scale-105"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
-                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -273,11 +288,8 @@ const Work = () => {
                   </span>
                 </div>
                 {activeFilter === filter.key && (
-                  <motion.div
-                    layoutId="activeTab"
+                  <div
                     className="absolute inset-0 bg-white rounded-2xl border-2 border-[#D84A0E]"
-                    initial={false}
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
               </motion.button>
@@ -392,34 +404,39 @@ const Work = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/30 z-50 flex items-center justify-center p-4 overflow-y-auto"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
+              className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl my-8 flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative h-80 overflow-hidden">
+              <div className="relative h-80 flex-shrink-0 overflow-hidden">
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2">
-                  <selectedProject.icon className="w-6 h-6 text-[#D84A0E]" />
-                </div>
+                {/* Close button on left */}
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full p-2 hover:bg-white transition-colors"
                 >
                   <X className="w-6 h-6" />
                 </button>
+                {/* Home button on right */}
+                <button
+                  onClick={() => navigate('/')}
+                  className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 hover:bg-white transition-colors"
+                >
+                  <Home className="w-6 h-6 text-[#D84A0E]" />
+                </button>
               </div>
 
-              <div className="p-8">
+              <div className="p-8 overflow-y-auto flex-1">
                 <div className="flex items-start justify-between mb-6">
                   <div>
                     <h2 className="text-3xl font-bold text-gray-800 mb-2">{selectedProject.title}</h2>
@@ -586,7 +603,7 @@ const Work = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { number: "500+", label: "Projects Completed", icon: Sun, color: "from-yellow-400 to-orange-500" },
-              { number: "50MW+", label: "Clean Energy Generated", icon: Zap, color: "from-blue-400 to-cyan-500" },
+              { number: "500MW+", label: "Clean Energy Generated", icon: Zap, color: "from-blue-400 to-cyan-500" },
               { number: "6000+", label: "Satisfied Customers", icon: Users, color: "from-green-400 to-emerald-500" },
               { number: "5+", label: "Years of Excellence", icon: Award, color: "from-purple-400 to-pink-500" }
             ].map((stat, index) => (
@@ -604,7 +621,7 @@ const Work = () => {
                   <div className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
                     <stat.icon className="w-8 h-8 text-white" />
                   </div>
-                  <div className="text-4xl font-bold mb-2 bg-gradient-to-r from-white to-yellow-200 bg-clip-text text-transparent">
+                  <div className="text-xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-white to-yellow-200 bg-clip-text text-transparent">
                     {stat.number}
                   </div>
                   <div className="text-white/80 font-medium">{stat.label}</div>

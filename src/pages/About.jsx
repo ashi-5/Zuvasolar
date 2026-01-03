@@ -81,7 +81,7 @@ const About = () => {
       color: "from-green-500 to-emerald-500",
     },
     {
-      number: "15+",
+      number: "5+",
       label: "Years Combined Experience",
       icon: Award,
       color: "from-purple-500 to-pink-500",

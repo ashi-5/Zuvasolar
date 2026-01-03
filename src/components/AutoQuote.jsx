@@ -56,6 +56,10 @@ export default function AutoQuote({ open, setOpen }) {
             type="tel"
             placeholder="Mobile Number *"
             required
+            maxLength="10"
+            onInput={(e) => {
+              e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+            }}
             className="input input-bordered w-full bg-white text-gray-900 placeholder-gray-400 border-gray-300 focus:border-[#D84A0E] focus:outline-none"
           />
 

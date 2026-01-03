@@ -42,7 +42,14 @@ const Contact = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    
+    // Restrict mobile to only digits and max 10 characters
+    if (name === 'mobile') {
+      const numericValue = value.replace(/\D/g, '').slice(0, 10);
+      setFormData({ ...formData, [name]: numericValue });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleServiceChange = (service) => {
@@ -201,7 +208,7 @@ const Contact = () => {
     {
       question: "Do you work with both residential and commercial clients?",
       answer:
-        "Absolutely! We serve residential homeowners, commercial businesses, and industrial clients across India and the UAE.",
+        "Absolutely! We serve residential homeowners, commercial businesses, and industrial clients across India.",
     },
   ];
 
@@ -341,6 +348,7 @@ const Contact = () => {
             <Toaster position="top-right" />
 
             <motion.div
+              id="contact-form"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
@@ -379,84 +387,119 @@ const Contact = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Name */}
                     <div className="grid md:grid-cols-2 gap-6">
-                      <input
-                        type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleInputChange}
-                        required
-                        placeholder="First Name *"
-                        className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
-                      />
-                      <input
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleInputChange}
-                        required
-                        placeholder="Last Name *"
-                        className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
-                      />
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          First Name <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="firstName"
+                          value={formData.firstName}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="First Name"
+                          className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Last Name <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="lastName"
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="Last Name"
+                          className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
+                        />
+                      </div>
                     </div>
 
                     {/* Contact */}
                     <div className="grid md:grid-cols-2 gap-6">
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        placeholder="Email Address *"
-                        className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
-                      />
-                      <input
-                        type="tel"
-                        name="mobile"
-                        value={formData.mobile}
-                        onChange={handleInputChange}
-                        placeholder="Mobile Number"
-                        maxLength="10"
-                        className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
-                      />
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Email Address <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="Email Address"
+                          className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Mobile Number <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="tel"
+                          name="mobile"
+                          value={formData.mobile}
+                          onChange={handleInputChange}
+                          placeholder="Mobile Number"
+                          maxLength="10"
+                          className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
+                        />
+                      </div>
                     </div>
 
                     {/* Company */}
                     <div className="grid md:grid-cols-2 gap-6">
-                      <input
-                        type="text"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleInputChange}
-                        required
-                        placeholder="Company Name *"
-                        className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
-                      />
-                      <input
-                        type="text"
-                        name="jobTitle"
-                        value={formData.jobTitle}
-                        onChange={handleInputChange}
-                        required
-                        placeholder="Job Title *"
-                        className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
-                      />
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Company Name <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="company"
+                          value={formData.company}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="Company Name"
+                          className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Job Title <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="jobTitle"
+                          value={formData.jobTitle}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="Job Title"
+                          className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
+                        />
+                      </div>
                     </div>
 
                     {/* state */}
-                    <select
-                      name="state"
-                      value={formData.state}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full bg-white text-gray-900 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
-                    >
-                      <option value="">Select state *</option>
-                      <option>Telangana</option>
-                      <option>Andhra Pradesh</option>
-                      <option>Karnataka</option>
-                      <option>Other</option>
-                    </select>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        State <span className="text-red-500">*</span>
+                      </label>
+                      <select
+                        name="state"
+                        value={formData.state}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full bg-white text-gray-900 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] transition"
+                      >
+                        <option value="">Select state</option>
+                        <option>Telangana</option>
+                        <option>Andhra Pradesh</option>
+                        <option>Karnataka</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
 
                     {/* Net Zero Goal */}
 
@@ -491,14 +534,19 @@ const Contact = () => {
                     </div>
 
                     {/* Message */}
-                    <textarea
-                      name="requirements"
-                      value={formData.requirements}
-                      onChange={handleInputChange}
-                      rows="4"
-                      placeholder="Tell us your requirements"
-                      className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] resize-none transition"
-                    />
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Requirements
+                      </label>
+                      <textarea
+                        name="requirements"
+                        value={formData.requirements}
+                        onChange={handleInputChange}
+                        rows="4"
+                        placeholder="Tell us your requirements"
+                        className="w-full bg-white text-gray-900 placeholder-gray-400 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#D84A0E] focus:border-[#D84A0E] resize-none transition"
+                      />
+                    </div>
 
                     {/* Submit */}
                     <motion.button
@@ -671,6 +719,19 @@ const Contact = () => {
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+              <motion.button
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#D84A0E] to-[#b83e0c]
+                     px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-white
+                     shadow-lg hover:shadow-xl transition cursor-pointer"
+              >
+                <Calendar className="w-5 h-5" />
+                Schedule Consultation
+              </motion.button>
               <motion.button
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.98 }}

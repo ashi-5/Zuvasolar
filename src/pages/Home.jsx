@@ -17,6 +17,7 @@ import {
   Clock,
   Headset,
   DollarSign,
+  Phone,
 } from "lucide-react";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
@@ -509,8 +510,8 @@ const Home = () => {
           {/* Map */}
           <div className="mt-12 rounded-2xl overflow-hidden shadow-md border">
             <iframe
-              title="Zuva Solar Location"
-              src="https://www.google.com/maps?q=17.951861,79.599694&z=15&output=embed"
+              title="Zuva Solar Warangal Location"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d170.19552239321968!2d79.59950582864538!3d17.95190225086053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b9e9f40dd6b459d%3A0x24252b4cdbdea41!2sZuva%20Engineering%20Solar%20Energy%20Solutions!5e1!3m2!1sen!2sin!4v1766933295726!5m2!1sen!2sin"
               className="w-full h-[320px] md:h-[360px] border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -889,6 +890,94 @@ const Home = () => {
       </section>
 
       {/* faq end  */}
+
+      {/* Our Location Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-r from-[#D84A0E] to-[#b83e0c] rounded-xl flex items-center justify-center">
+                <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+                Our Location
+              </h2>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Location Info */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-lg border">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
+                  India Office
+                </h3>
+
+                <p className="text-base sm:text-lg text-gray-600 mb-4 leading-relaxed">
+                  19-9-483, Shambunipet,
+                  <br />
+                  Warangal, Telangana 506005, India
+                </p>
+
+                <div className="flex items-center gap-3 text-base text-gray-600">
+                  <Phone className="w-5 h-5 text-[#D84A0E]" />
+                  <span>+91 79955 00320</span>
+                </div>
+              </div>
+
+              {/* Quick Stats */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 text-center">
+                  <div className="text-2xl font-bold text-green-800 mb-1">
+                    24/7
+                  </div>
+                  <div className="text-sm text-green-600">
+                    Support Available
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 text-center">
+                  <div className="text-2xl font-bold text-blue-800 mb-1">
+                    &lt;24hrs
+                  </div>
+                  <div className="text-sm text-blue-600">
+                    Response Time
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Map */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="rounded-2xl overflow-hidden shadow-lg border h-64 sm:h-80"
+            >
+              <iframe
+                title="Zuva Solar Warangal Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d170.19552239321968!2d79.59950582864538!3d17.95190225086053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b9e9f40dd6b459d%3A0x24252b4cdbdea41!2sZuva%20Engineering%20Solar%20Energy%20Solutions!5e1!3m2!1sen!2sin!4v1766933295726!5m2!1sen!2sin"
+                className="w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* floating whats app  */}
       <WhatsappFloat />
